@@ -1,0 +1,3 @@
+[submodule "iconoir"]
+	path = iconoir
+	url = https://github.com/iconoir-icons/iconoir.git
