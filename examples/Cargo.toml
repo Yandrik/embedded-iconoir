@@ -1,0 +1,23 @@
+[package]
+name = "embedded-iconoir-examples"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[[bin]]
+name = "cover_example"
+required-features = [ "embedded-iconoir/all-icons" ]
+
+
+[[bin]]
+name = "tester"
+required-features = [ "embedded-iconoir/all-icons" ]
+
+[dependencies]
+anyhow = "1.0"
+colorous = "1.0.10"
+embedded-graphics-simulator = "0.4.1"
+embedded-graphics = "0.7.1"
+
+embedded-iconoir = { path = "../embedded-iconoir" }

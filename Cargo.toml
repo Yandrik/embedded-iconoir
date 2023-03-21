@@ -1,4 +1,6 @@
 [workspace]
 members = [
     "embedded-iconoir",
+    "examples",
+    "xtask",
 ]
