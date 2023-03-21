@@ -21,6 +21,7 @@ required-features = ["18px", "32px", "__internal_simulator"]
 144px = []
 
 default = ["24px"]
+all-resolutions = ["12px", "18px", "24px", "32px", "48px", "96px", "144px"]
 
 __internal_simulator = ["dep:embedded-graphics-simulator"]
 
