@@ -1,0 +1,35 @@
+[package]
+name = "embedded-iconoir"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[lib]
+
+[features]
+12px = []
+18px = []
+24px = []
+32px = []
+48px = []
+96px = []
+144px = []
+
+default = ["24px"]
+all-resolutions = ["12px", "18px", "24px", "32px", "48px", "96px", "144px"]
+
+[dependencies]
+bit_field = "0.10"
+embedded-graphics = "0.7"
+embedded-graphics-core = "0.3.3"
+paste = "1.0"
+
+
+[dev-dependencies]
+
+
+# Set the settings for build scripts and proc-macros.
+
+[profile.dev.build-override]
+opt-level = 3
