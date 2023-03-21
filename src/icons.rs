@@ -1,6 +1,7 @@
-use crate::make_icon_category;
 
 // imports for include! file
+#[allow(unused)]
+use crate::{make_icon, make_icon_category};
 #[allow(unused)]
 use crate::icon::*;
 #[allow(unused)]
