@@ -161,6 +161,7 @@ fn gen_module(
     size: u32,
     icons: &HashMap<String, Vec<String>>,
 ) -> anyhow::Result<()> {
+    println!("Generating module for {} icon categories of size {}px", icons.len(), size);
     /*
     sample:
         make_icon_category!(actions, 24, "Actions", [
@@ -171,8 +172,10 @@ fn gen_module(
         ]);
      */
 
+    writeln!(code, "#[cfg(feature = \"{}px\")]", size)?;
     writeln!(code, "pub mod size{}px {{ \nuse super::*; \n", size)?;
     for (cat, icon_list) in icons {
+        println!("{}px: making category {} for {} icons...", size, cat, icon_list.len());
         writeln!(
             code,
             "make_icon_category!({}, {}, \"{}\", [",
@@ -198,6 +201,8 @@ fn gen_code(
     target_file: &Path,
     icons: Vec<(u32, HashMap<String, Vec<String>>)>,
 ) -> anyhow::Result<()> {
+    println!("generating code...");
+
     let mut code = String::new();
 
     code.push_str(
@@ -228,26 +233,14 @@ fn gen_code(
     Ok(())
 }
 
-fn main() {
-    println!("cargo:rerun-if-changed=iconoir");
-    println!("cargo:rerun-if-changed=build.rs");
-    println!("cargo:rerun-if-changed=src/icon.rs");
-    // todo
-
+pub fn main() {
     let sizes = vec![
-        #[cfg(feature = "12px")]
             12,
-        #[cfg(feature = "18px")]
             18,
-        #[cfg(feature = "24px")]
             24,
-        #[cfg(feature = "32px")]
             32,
-        #[cfg(feature = "48px")]
             48,
-        #[cfg(feature = "96px")]
             96,
-        #[cfg(feature = "144px")]
             144,
     ];
 
