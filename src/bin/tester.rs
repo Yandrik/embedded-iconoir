@@ -11,9 +11,11 @@ use embedded_graphics_simulator::BinaryColorTheme::Default;
 use embedded_graphics_simulator::{
     BinaryColorTheme, OutputSettingsBuilder, SimulatorDisplay, Window,
 };
-use iconoir_rs_embedded::size18px::{actions, activities, buildings, cloud};
-use iconoir_rs_embedded::{size18px, size32px, Icon};
+use embedded_iconoir::size18px::{actions, activities, buildings, cloud};
+use embedded_iconoir::{size18px, size32px, Icon};
 use std::ops::Add;
+use std::ptr::write;
+use embedded_iconoir::size24px;
 
 type Color = Rgb888;
 
@@ -143,6 +145,16 @@ fn main() {
         3,
         40,
         40,
+    );
+
+    draw_icon(
+        &mut display,
+        &size24px::activities::Bonfire::new(Rgb888::CSS_FUCHSIA),
+        8,
+        2,
+        30,
+        30
+
     );
 
     let output_settings = OutputSettingsBuilder::new()
