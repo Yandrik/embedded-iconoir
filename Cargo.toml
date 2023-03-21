@@ -1,8 +1,42 @@
 [package]
-name = "iconoir_rs_embedded"
+name = "embedded-iconoir"
 version = "0.1.0"
 edition = "2021"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
+[[bin]]
+name = "tester"
+required-features = ["18px", "32px", "__internal_simulator"]
+
+[lib]
+
+[features]
+12px = []
+18px = []
+24px = []
+32px = []
+48px = []
+96px = []
+144px = []
+
+default = ["24px"]
+
+__internal_simulator = ["dep:embedded-graphics-simulator"]
+
 [dependencies]
+bit_field = "0.10"
+embedded-graphics = "0.7"
+embedded-graphics-core = "0.3.3"
+embedded-graphics-simulator = { version = "0.4.1", optional = true }
+paste = "1.0"
+
+[build-dependencies]
+heck = "0.4.1"
+anyhow = "1.0"
+bit-vec = "0.6"
+paste = "1.0"
+regex = "1.7.1"
+resvg = "0.29"
+usvg = "0.29"
+walkdir = "2.3.3"
