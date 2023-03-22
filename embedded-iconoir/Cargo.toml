@@ -7,6 +7,15 @@ edition = "2021"
 
 [lib]
 
+[[test]]
+name = "render_test"
+required-features = [ "all-resolutions" ]
+
+[[bench]]
+name = "bench_icons"
+required-features = [ "all-resolutions" ]
+harness = false
+
 [features]
 12px = []
 18px = []
@@ -24,8 +33,9 @@ bit_field = "0.10"
 embedded-graphics = "0.7"
 embedded-graphics-core = "0.3.3"
 paste = "1.0"
-
 static_assertions = "1.1"
 
 [dev-dependencies]
+anyhow = "1.0"
+criterion = "0.4"
 
