@@ -1,4 +1,3 @@
-use bit_field::BitField;
 use embedded_graphics::prelude::*;
 use embedded_graphics_core::primitives::Rectangle;
 use static_assertions::const_assert;
