@@ -1,14 +1,16 @@
-use std::thread;
-use std::time::Duration;
 use colorous::Color;
 use embedded_graphics::image::Image;
-use embedded_graphics_core::pixelcolor::Rgb888;
-use embedded_graphics_core::prelude::*;
-use embedded_graphics_simulator::{OutputSettingsBuilder, SimulatorDisplay, SimulatorEvent, Window};
-use embedded_iconoir::{Icon, icons};
+use embedded_graphics::pixelcolor::Rgb888;
+use embedded_graphics::prelude::*;
+use embedded_graphics_simulator::{
+    OutputSettingsBuilder, SimulatorDisplay, SimulatorEvent, Window,
+};
+use embedded_iconoir::prelude::IconoirNewIcon;
 use embedded_iconoir::size12px::maps::Position;
+use embedded_iconoir::{icons, Icon};
+use std::thread;
+use std::time::Duration;
 
-#[test]
 fn main() -> anyhow::Result<()> {
     let mut display = SimulatorDisplay::new(Size::new(250, 150));
 
@@ -31,12 +33,13 @@ fn main() -> anyhow::Result<()> {
     image_large.draw(&mut display)?;
     image_huge.draw(&mut display)?;
 
-
-    let mut window = Window::new("Cover Example", &OutputSettingsBuilder::new().scale(2).build());
+    let mut window = Window::new(
+        "Cover Example",
+        &OutputSettingsBuilder::new().scale(2).build(),
+    );
     window.update(&display);
 
     thread::sleep(Duration::from_secs(1));
-
 
     let mut idx = 0u8;
     let colorscheme = colorous::RAINBOW;
@@ -64,7 +67,10 @@ fn main() -> anyhow::Result<()> {
 
         window.update(&display);
 
-        if window.events().fold(false, |acc, evt| acc | matches!(evt, SimulatorEvent::Quit)) {
+        if window
+            .events()
+            .fold(false, |acc, evt| acc | matches!(evt, SimulatorEvent::Quit))
+        {
             break;
         }
 

@@ -1,21 +1,21 @@
 use embedded_graphics::image::Image;
 use embedded_graphics::mono_font::ascii::FONT_6X9;
 use embedded_graphics::mono_font::MonoTextStyle;
+use embedded_graphics::pixelcolor::{BinaryColor, Rgb888};
 use embedded_graphics::prelude::*;
 use embedded_graphics::primitives::{Circle, Line, PrimitiveStyle, StyledDrawable};
 use embedded_graphics::text;
 use embedded_graphics::text::Text;
-use embedded_graphics_core::pixelcolor::{BinaryColor, Rgb888};
-use embedded_graphics_core::prelude::*;
 use embedded_graphics_simulator::BinaryColorTheme::Default;
 use embedded_graphics_simulator::{
     BinaryColorTheme, OutputSettingsBuilder, SimulatorDisplay, Window,
 };
+use embedded_iconoir::prelude::IconoirNewIcon;
 use embedded_iconoir::size18px::{actions, activities, buildings, cloud};
+use embedded_iconoir::size24px;
 use embedded_iconoir::{size18px, size32px, Icon};
 use std::ops::Add;
 use std::ptr::write;
-use embedded_iconoir::size24px;
 
 type Color = Rgb888;
 
@@ -153,8 +153,7 @@ fn main() {
         8,
         2,
         30,
-        30
-
+        30,
     );
 
     let output_settings = OutputSettingsBuilder::new()
