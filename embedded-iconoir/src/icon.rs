@@ -7,7 +7,7 @@ macro_rules! make_icon {
     ($name:ident, $size:expr, $category:expr, $file:expr) => {
         pub struct $name;
 
-        impl $crate::icon::IconoirInternal for $name {
+        impl $crate::icon::sealed::IconoirInternal for $name {
             const SIZE: u32 = $size;
             const DATA: &'static [u8] = include_bytes!(concat!(
                 "../rendered/",
@@ -18,13 +18,10 @@ macro_rules! make_icon {
                 $file,
                 ".bits"
             ));
-
-            fn _new_internal() -> Self {
-                $name
-            }
+            const INSTANCE: Self = $name;
         }
 
-        const_assert!($name::DATA.len() >= $name::BYTE_COUNT);
+        const_assert!(<$name as $crate::icon::sealed::IconoirInternal>::DATA.len() >= <$name as $crate::icon::sealed::IconoirInternal>::BYTE_COUNT);
         // macro end
     };
 }
@@ -49,18 +46,17 @@ make_icon!(SomeIcon, 24, "Animals", "fish");
 pub struct Icon<C, Ico>
 where
     C: PixelColor,
-    Ico: IconoirInternal,
+    Ico: sealed::IconoirInternal,
 {
     color: C,
-    #[allow(unused)]
-    icon: Ico,
+    _icon: Ico,
 }
 
-impl<C: PixelColor, Ico: IconoirInternal> Icon<C, Ico> {
+impl<C: PixelColor, Ico: sealed::IconoirInternal> Icon<C, Ico> {
     pub fn new(color: C) -> Self {
         Self {
             color,
-            icon: Ico::_new_internal(),
+            _icon: Ico::INSTANCE,
         }
     }
 
@@ -73,37 +69,39 @@ impl<C: PixelColor, Ico: IconoirInternal> Icon<C, Ico> {
     }
 }
 
+
 pub trait IconoirNewIcon<C: PixelColor>: Sized
 where
-    Self: IconoirInternal,
+    Self: sealed::IconoirInternal,
 {
     fn new(color: C) -> Icon<C, Self>;
 }
 
 impl<C: PixelColor, T> IconoirNewIcon<C> for T
 where
-    T: IconoirInternal,
+    T: sealed::IconoirInternal,
 {
     fn new(color: C) -> Icon<C, Self> {
         Icon {
             color,
-            icon: Self::_new_internal(),
+            _icon: Self::INSTANCE,
         }
     }
 }
 
-pub trait IconoirInternal: Sized {
-    const SIZE: u32;
-    const BIT_COUNT: usize = { Self::SIZE as usize * Self::SIZE as usize };
-    const BYTE_COUNT: usize = { Self::BIT_COUNT / 8 + if Self::BIT_COUNT % 8 > 0 { 1 } else { 0 } };
-    const DATA: &'static [u8];
-
-    fn _new_internal() -> Self;
+pub(crate) mod sealed {
+    pub trait IconoirInternal: Sized {
+        const SIZE: u32;
+        const BIT_COUNT: usize = { Self::SIZE as usize * Self::SIZE as usize };
+        const BYTE_COUNT: usize = { Self::BIT_COUNT / 8 + if Self::BIT_COUNT % 8 > 0 { 1 } else { 0 } };
+        const DATA: &'static [u8];
+        const INSTANCE: Self;
+    }
 }
 
 impl<C, T> ImageDrawable for Icon<C, T>
 where
-    T: IconoirInternal,
+    T: sealed::IconoirInternal,
     C: PixelColor,
 {
     type Color = C;
@@ -134,7 +132,7 @@ where
 
 impl<C, T> OriginDimensions for Icon<C, T>
 where
-    T: IconoirInternal,
+    T: sealed::IconoirInternal,
     C: PixelColor,
 {
     #[inline(always)]

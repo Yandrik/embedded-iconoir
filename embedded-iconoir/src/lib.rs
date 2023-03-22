@@ -1,7 +1,7 @@
 #![no_std]
 
 pub mod prelude {
-    pub use crate::icon::{IconoirInternal, IconoirNewIcon};
+    pub use crate::icon::IconoirNewIcon;
 }
 
 mod icon;
