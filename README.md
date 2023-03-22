@@ -83,7 +83,7 @@ If you run this, you'll get something like this:
 
 ![](./example.gif)
 
-A complete version of this code can also be viewed in `tests/cover_example.rs`.
+A complete version of this code can also be viewed in `examples/src/bin/cover_example.rs`.
 
 ## Contributing
 
