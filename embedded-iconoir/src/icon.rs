@@ -122,6 +122,7 @@ where
         Ok(())
     }
 
+    #[inline(always)]
     fn draw_sub_image<D>(&self, target: &mut D, area: &Rectangle) -> Result<(), D::Error>
     where
         D: DrawTarget<Color = Self::Color>,
@@ -136,6 +137,7 @@ where
     T: IconoirInternal,
     C: PixelColor,
 {
+    #[inline(always)]
     fn size(&self) -> Size {
         Size {
             width: T::SIZE as u32,
