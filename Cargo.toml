@@ -4,3 +4,8 @@ members = [
     "examples",
     "xtask",
 ]
+
+# Set the settings for build scripts and proc-macros.
+
+[profile.dev.build-override]
+opt-level = 3

@@ -1,13 +1,14 @@
-
 // imports for include! file
 #[allow(unused)]
-use crate::{make_icon, make_icon_category};
-#[allow(unused)]
 use crate::icon::*;
+#[allow(unused)]
+use crate::{make_icon, make_icon_category};
 #[allow(unused)]
 use bit_field::*;
 #[allow(unused)]
 use embedded_graphics::prelude::*;
+#[allow(unused)]
+use static_assertions::const_assert;
 
 /*
 approximate structure per category & resolution:

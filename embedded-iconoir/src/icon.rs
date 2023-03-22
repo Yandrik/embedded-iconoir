@@ -1,101 +1,31 @@
+use bit_field::BitField;
 use embedded_graphics::prelude::*;
-
-#[allow(unused)]
-macro_rules! get_bit_unsafe {
-    ($num:expr, $bit:expr) => {{
-        // static_assertions::const_assert!(::std::mem::size($num) <= $bit);
-        ($num & { 1 << $bit }) != 0
-    }};
-}
+use embedded_graphics_core::primitives::Rectangle;
+use static_assertions::const_assert;
 
 #[macro_export]
 macro_rules! make_icon {
     ($name:ident, $size:expr, $category:expr, $file:expr) => {
-        pub struct $name<C: embedded_graphics::pixelcolor::PixelColor> {
-            color: C,
-        }
+        pub struct $name;
 
-        impl<C: ::embedded_graphics::pixelcolor::PixelColor> $crate::icon::Icon<C> for $name<C> {
-            #[inline(always)]
-            fn new(color: C) -> Self {
-                Self { color }
-            }
+        impl $crate::icon::IconoirInternal for $name {
+            const SIZE: u32 = $size;
+            const DATA: &'static [u8] = include_bytes!(concat!(
+                "../rendered/",
+                stringify!($size),
+                "px/",
+                $category,
+                "/",
+                $file,
+                ".bits"
+            ));
 
-            #[inline(always)]
-            fn set_color(&mut self, color: C) {
-                self.color = color;
-            }
-
-            #[inline(always)]
-            fn get_color(&self) -> C {
-                self.color
+            fn _new_internal() -> Self {
+                $name
             }
         }
 
-        impl<C: embedded_graphics::pixelcolor::PixelColor> $crate::icon::RawIcon<C> for $name<C> {
-            #[inline(always)]
-            fn get_data_raw(&self) -> &'static [u8] {
-                include_bytes!(concat!(
-                    "../rendered/",
-                    stringify!($size),
-                    "px/",
-                    $category,
-                    "/",
-                    $file,
-                    ".bits"
-                ))
-            }
-        }
-
-        // ImageDrawable implementation
-        impl<C: ::embedded_graphics::pixelcolor::PixelColor>
-            ::embedded_graphics::prelude::ImageDrawable for $name<C>
-        {
-            type Color = C;
-
-            fn draw<D>(&self, target: &mut D) -> Result<(), D::Error>
-            where
-                D: ::embedded_graphics::prelude::DrawTarget<Color = Self::Color>,
-            {
-                let data = self.get_data_raw();
-
-                for y in 0..$size {
-                    for x in 0..$size {
-                        if data.get_bit((x + y * $size) as usize) {
-                            ::embedded_graphics::prelude::Pixel(
-                                ::embedded_graphics::prelude::Point::new(x as i32, y as i32),
-                                self.get_color(),
-                            )
-                            .draw(target)?;
-                        }
-                    }
-                }
-                Ok(())
-            }
-
-            fn draw_sub_image<D>(
-                &self,
-                target: &mut D,
-                area: &::embedded_graphics::primitives::Rectangle,
-            ) -> Result<(), D::Error>
-            where
-                D: ::embedded_graphics::prelude::DrawTarget<Color = Self::Color>,
-            {
-                // from tinytga
-                self.draw(&mut target.translated(-area.top_left).clipped(area))
-            }
-        }
-
-        impl<C: ::embedded_graphics::prelude::PixelColor>
-            ::embedded_graphics::prelude::OriginDimensions for $name<C>
-        {
-            fn size(&self) -> ::embedded_graphics::prelude::Size {
-                ::embedded_graphics::prelude::Size {
-                    width: $size,
-                    height: $size,
-                }
-            }
-        }
+        const_assert!($name::DATA.len() >= $name::BYTE_COUNT);
         // macro end
     };
 }
@@ -115,20 +45,110 @@ macro_rules! make_icon_category {
     }
 }
 
-pub trait Icon<C: PixelColor>: Sized {
-    fn new(color: C) -> Self;
+make_icon!(SomeIcon, 24, "Animals", "fish");
 
-    fn set_color(&mut self, color: C);
-
-    fn get_color(&self) -> C;
+pub struct Icon<C, Ico>
+where
+    C: PixelColor,
+    Ico: IconoirInternal,
+{
+    color: C,
+    #[allow(unused)]
+    icon: Ico,
 }
 
-pub(crate) trait RawIcon<C: PixelColor>: Sized + ImageDrawable<Color=C> {
-    /// Get the icon's raw data.
-    ///
-    /// This data will be included using `include_bytes!` in most cases.
-    ///
-    /// The length of the result slice has to be at least `SIZE * SIZE / 8 + SIZE` (1/8th of the
-    /// pixel count, rounded up)
-    fn get_data_raw(&self) -> &'static [u8];
+impl<C: PixelColor, Ico: IconoirInternal> Icon<C, Ico> {
+    pub fn new(color: C) -> Self {
+        Self {
+            color,
+            icon: Ico::_new_internal(),
+        }
+    }
+
+    pub fn set_color(&mut self, color: C) {
+        self.color = color;
+    }
+
+    pub fn get_color(&self) -> C {
+        self.color
+    }
+}
+
+pub trait IconoirNewIcon<C: PixelColor>: Sized
+where
+    Self: IconoirInternal,
+{
+    fn new(color: C) -> Icon<C, Self>;
+}
+
+impl<C: PixelColor, T> IconoirNewIcon<C> for T
+where
+    T: IconoirInternal,
+{
+    fn new(color: C) -> Icon<C, Self> {
+        Icon {
+            color,
+            icon: Self::_new_internal(),
+        }
+    }
+}
+
+pub trait IconoirInternal: Sized {
+    const SIZE: u32;
+    const BIT_COUNT: usize = { Self::SIZE as usize * Self::SIZE as usize };
+    const BYTE_COUNT: usize = { Self::BIT_COUNT / 8 + if Self::BIT_COUNT % 8 > 0 { 1 } else { 0 } };
+    const DATA: &'static [u8];
+
+    fn _new_internal() -> Self;
+}
+
+impl<C, T> ImageDrawable for Icon<C, T>
+where
+    T: IconoirInternal,
+    C: PixelColor,
+{
+    type Color = C;
+    fn draw<D>(&self, target: &mut D) -> Result<(), D::Error>
+    where
+        D: DrawTarget<Color = Self::Color>,
+    {
+        let data = T::DATA;
+        for y in 0..T::SIZE {
+            for x in 0..T::SIZE {
+                if get_bit_unchecked(data, (x + y * T::SIZE) as usize) {
+                    Pixel(Point::new(x as i32, y as i32), self.get_color()).draw(target)?;
+                }
+            }
+        }
+        Ok(())
+    }
+
+    fn draw_sub_image<D>(&self, target: &mut D, area: &Rectangle) -> Result<(), D::Error>
+    where
+        D: DrawTarget<Color = Self::Color>,
+    {
+        // from tinytga
+        self.draw(&mut target.translated(-area.top_left).clipped(area))
+    }
+}
+
+impl<C, T> OriginDimensions for Icon<C, T>
+where
+    T: IconoirInternal,
+    C: PixelColor,
+{
+    fn size(&self) -> Size {
+        Size {
+            width: T::SIZE as u32,
+            height: T::SIZE as u32,
+        }
+    }
+}
+
+/// Retrieve the n-th bit from a slice of bytes
+/// without performing in-bounds checking
+fn get_bit_unchecked(target: &[u8], bit: usize) -> bool {
+    let slice_index = bit / 8;
+    let bit_index = bit % 8;
+    (target[slice_index] & (1 << bit_index)) != 0
 }

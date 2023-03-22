@@ -25,11 +25,7 @@ embedded-graphics = "0.7"
 embedded-graphics-core = "0.3.3"
 paste = "1.0"
 
+static_assertions = "1.1"
 
 [dev-dependencies]
 
-
-# Set the settings for build scripts and proc-macros.
-
-[profile.dev.build-override]
-opt-level = 3
