@@ -89,34 +89,3 @@ A complete version of this code can also be viewed in `tests/cover_example.rs`.
 
 If you found a bug, or think that a feature is missing, please open an issue on [GitHub](https://github.com/yandrik/embedded-iconoir).
 Of course, Pull Requests are also very much appreciated.
-
-
-
-
-a
-a
-a
-
-a
-a
-a
-a
-a
-a
-a
-
-
-
-a
-
-a
-
-
-aa
-
-
-a
-
-a
-a
-
