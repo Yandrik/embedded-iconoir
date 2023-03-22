@@ -9,7 +9,7 @@ All the over 1300 icons offered by [Iconoir](https://github.com/iconoir-icons/ic
 They are ordered by categories, so if you need a preview look at [the Iconoir Website](https://iconoir.com)
 to pick out the exact icon you need.
 
-### How much storage does this add to my app?
+### How much size does this add to my binary?
 Not a lot, actually. Only icons that you actually use are included, and they are tiny.
 Every pixel only takes a single bit, so each icon is `resolution^2 / 8` bytes in size.
 For `24px` resolution, each icon is only 72 bytes. That means you could fit all 1300+ icons in `24px`
@@ -62,7 +62,7 @@ fn main() -> anyhow::Result<()> {
 
     loop {
         let Color { r, g, b } = colorscheme.eval_rational(idx as usize, u8::MAX as usize);
-        let _ = idx.overflowing_add(1);
+        let idx = idx.overflowing_add(1).0;
 
         // Colors can be changed dynamically during runtime
         icon_tiny.set_color(Rgb888::new(r, g, b));
@@ -84,6 +84,13 @@ If you run this, you'll get something like this:
 ![](./example.gif)
 
 A complete version of this code can also be viewed in `examples/src/bin/cover_example.rs`.
+
+
+## Developing locally
+To develop `embedded-iconoir` locally, clone the repository, and then execute `git submodule init`
+and `git submodule update` to pull `Iconoir` into the repository. After that, run `cargo xtask generate`
+to render the icons to `.bits` files, and generate the code.
+
 
 ## Contributing
 
