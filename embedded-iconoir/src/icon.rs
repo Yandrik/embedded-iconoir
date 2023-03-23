@@ -22,7 +22,10 @@ macro_rules! make_icon {
             const INSTANCE: Self = $name;
         }
 
-        const_assert!(<$name as $crate::icon::sealed::IconoirInternal>::DATA.len() >= <$name as $crate::icon::sealed::IconoirInternal>::BYTE_COUNT);
+        const_assert!(
+            <$name as $crate::icon::sealed::IconoirInternal>::DATA.len()
+                >= <$name as $crate::icon::sealed::IconoirInternal>::BYTE_COUNT
+        );
         // macro end
     };
 }
@@ -130,7 +133,8 @@ pub(crate) mod sealed {
     pub trait IconoirInternal: Sized {
         const SIZE: u32;
         const BIT_COUNT: usize = { Self::SIZE as usize * Self::SIZE as usize };
-        const BYTE_COUNT: usize = { Self::BIT_COUNT / 8 + if Self::BIT_COUNT % 8 > 0 { 1 } else { 0 } };
+        const BYTE_COUNT: usize =
+            { Self::BIT_COUNT / 8 + if Self::BIT_COUNT % 8 > 0 { 1 } else { 0 } };
         const DATA: &'static [u8];
         const INSTANCE: Self;
     }
