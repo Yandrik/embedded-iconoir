@@ -5,6 +5,7 @@ use static_assertions::const_assert;
 #[macro_export]
 macro_rules! make_icon {
     ($name:ident, $size:expr, $category:expr, $file:expr) => {
+        #[derive(Debug, Copy, Clone)]
         pub struct $name;
 
         impl $crate::icon::sealed::IconoirInternal for $name {
@@ -79,6 +80,7 @@ make_icon!(SomeIcon, 24, "Animals", "fish");
 /// // Draw it to a display
 /// image.draw(&mut display).unwrap();
 /// ```
+#[derive(Debug)]
 pub struct Icon<C, Ico>
 where
     C: PixelColor,
@@ -104,7 +106,6 @@ impl<C: PixelColor, Ico: sealed::IconoirInternal> Icon<C, Ico> {
         self.color
     }
 }
-
 
 pub trait IconoirNewIcon<C: PixelColor>: Sized
 where
