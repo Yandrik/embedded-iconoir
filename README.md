@@ -83,7 +83,19 @@ If you run this, you'll get something like this:
 
 ![](./example.gif)
 
-A complete version of this code can also be viewed in `examples/src/bin/cover_example.rs`.
+A complete version of this code can also be viewed in 
+[`examples/src/bin/cover_example.rs`](https://github.com/Yandrik/embedded-iconoir/blob/main/examples/src/bin/cover_example.rs).
+
+
+## "But I want a different resolution!"
+
+That is certainly doable. All resolutions are dynamically generated, and the ones that are
+available are so because they seemed to fit a fairly broad spectrum of use cases.
+If something is missing in your opinion, please open an issue on [GitHub](https://github.com/Yandrik/embedded-iconoir).
+Note that bigger resolutions as well as a high amount of different resolutions
+(e.g `10px`, `11px`, ..., `47px`, `48px`) will at some point conflict with [crates.io](https://crates.io)'s
+max package size of 10MB, as the icons are pre-baked. So, if this is relevant for your use case,
+forking the repository and using it as a Git dependency is a better idea.
 
 
 ## Developing locally
