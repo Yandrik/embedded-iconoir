@@ -43,6 +43,42 @@ macro_rules! make_icon_category {
 
 make_icon!(SomeIcon, 24, "Animals", "fish");
 
+/// Struct to store icon color and properties.
+///
+/// There are two ways to instantiate an icon:
+/// ```rust
+/// # use embedded_graphics_core::pixelcolor::BinaryColor;
+/// # use embedded_iconoir::Icon;
+/// # use embedded_iconoir::prelude::*;
+/// // using constructors on icons (recommended)
+/// let icon = icons::size24px::actions::Download::new(BinaryColor::On);
+/// // using types
+/// let icon: Icon<_, icons::size24px::actions::Download> = Icon::new(BinaryColor::On);
+/// ```
+/// Both result in the same icon (`Icon<COLOR, ICON>`). Use whichever you prefer.
+///
+///
+///
+/// ## Full Usage Example
+///
+/// ```rust
+/// # use embedded_graphics::image::Image;
+/// # use embedded_graphics_core::pixelcolor::{BinaryColor};
+/// # use embedded_graphics_core::prelude::*;
+/// # use embedded_graphics::mock_display::MockDisplay;
+/// # let mut  display = MockDisplay::new();
+/// // Import icons and traits
+/// use embedded_iconoir::prelude::*;
+///
+/// // Create an icon
+/// let icon = icons::size24px::actions::Download::new(BinaryColor::On);
+///
+/// // Wrap it in an embedded_graphics image
+/// let image = Image::new(&icon, Point::zero());
+///
+/// // Draw it to a display
+/// image.draw(&mut display).unwrap();
+/// ```
 pub struct Icon<C, Ico>
 where
     C: PixelColor,
