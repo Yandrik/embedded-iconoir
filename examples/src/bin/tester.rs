@@ -30,9 +30,6 @@ fn draw_icon(
 fn main() {
     let mut display = SimulatorDisplay::<Color>::new(Size::new(320, 240));
 
-    let line_style = PrimitiveStyle::with_stroke(BinaryColor::On, 1);
-    let text_style = MonoTextStyle::new(&FONT_6X9, BinaryColor::On);
-
     draw_icon(
         &mut display,
         &actions::Cancel::new(Rgb888::CSS_GOLD),
