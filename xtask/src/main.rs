@@ -1,12 +1,11 @@
-use std::path::Path;
 use anyhow::bail;
 use clap::{Parser, Subcommand};
+use std::path::Path;
 
 #[derive(Parser, Debug)]
 struct Args {
-
     #[command(subcommand)]
-    command: Command
+    command: Command,
 }
 
 #[derive(Subcommand, Debug)]
