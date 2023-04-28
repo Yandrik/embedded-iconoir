@@ -179,8 +179,8 @@ where
     #[inline(always)]
     fn size(&self) -> Size {
         Size {
-            width: T::SIZE as u32,
-            height: T::SIZE as u32,
+            width: T::SIZE,
+            height: T::SIZE,
         }
     }
 }
