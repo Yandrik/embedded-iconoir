@@ -161,7 +161,11 @@ fn gen_module(
     size: u32,
     icons: &HashMap<String, Vec<String>>,
 ) -> anyhow::Result<()> {
-    println!("Generating module for {} icon categories of size {}px", icons.len(), size);
+    println!(
+        "Generating module for {} icon categories of size {}px",
+        icons.len(),
+        size
+    );
     /*
     sample:
         make_icon_category!(actions, 24, "Actions", [
@@ -175,7 +179,12 @@ fn gen_module(
     writeln!(code, "#[cfg(feature = \"{}px\")]", size)?;
     writeln!(code, "pub mod size{}px {{ \nuse super::*; \n", size)?;
     for (cat, icon_list) in icons {
-        println!("{}px: making category {} for {} icons...", size, cat, icon_list.len());
+        println!(
+            "{}px: making category {} for {} icons...",
+            size,
+            cat,
+            icon_list.len()
+        );
         writeln!(
             code,
             "make_icon_category!({}, {}, \"{}\", [",
@@ -234,15 +243,7 @@ fn gen_code(
 }
 
 pub fn main() {
-    let sizes = vec![
-            12,
-            18,
-            24,
-            32,
-            48,
-            96,
-            144,
-    ];
+    let sizes = vec![12, 18, 24, 32, 48, 96, 144];
 
     // panic!("{:#?}", get_categories());
 
@@ -269,7 +270,7 @@ pub fn main() {
                 .join(format!("{}px", size))
                 .as_path(),
         )
-            .expect("Couldn't render 24px icons");
+        .expect("Couldn't render 24px icons");
 
         maps.push((size, icons));
     }

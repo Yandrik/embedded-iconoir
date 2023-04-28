@@ -2,9 +2,8 @@ use embedded_graphics::mock_display::MockDisplay;
 use embedded_graphics_core::geometry::OriginDimensions;
 use embedded_graphics_core::image::ImageDrawable;
 use embedded_graphics_core::pixelcolor::BinaryColor;
-use embedded_iconoir::size24px::actions;
+
 use embedded_iconoir::{icons, Icon};
-use paste::paste;
 
 macro_rules! test_render_icon {
     ( $module_path:path, $cat:ident::$icon:ident ) => {{

@@ -6,8 +6,8 @@ use embedded_graphics_simulator::{
     OutputSettingsBuilder, SimulatorDisplay, SimulatorEvent, Window,
 };
 use embedded_iconoir::prelude::IconoirNewIcon;
-use embedded_iconoir::size12px::maps::Position;
-use embedded_iconoir::{icons, Icon};
+
+use embedded_iconoir::icons;
 use std::thread;
 use std::time::Duration;
 
