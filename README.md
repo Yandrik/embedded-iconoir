@@ -103,8 +103,24 @@ To develop `embedded-iconoir` locally, clone the repository, and then execute `g
 and `git submodule update` to pull `Iconoir` into the repository. After that, run `cargo xtask generate`
 to render the icons to `.bits` files, and generate the code.
 
+## Changelog
+
+### 0.2.0: Compatibility Patch for `embedded-graphics` 0.8
+
+- Updated `embedded-graphics` dependency to `0.8`
+- Fixed `embedded-graphics` compatibility issues
+- Rebuilt icons
+
+### 0.1.0: Initial Release
+
+- All icons are available in resolutions `12px`, `18px`, `24px`, `32px`, `48px`, `96px` and `144px`
+- Icons can be colored dynamically
+- Icons can be drawn on displays using `embedded-graphics`
+
 
 ## Contributing
 
 If you found a bug, or think that a feature is missing, please open an issue on [GitHub](https://github.com/yandrik/embedded-iconoir).
 Of course, Pull Requests are also very much appreciated.
+
+All intentional contributions, unless explicitly otherwise specified, are licensed under the MIT license.
