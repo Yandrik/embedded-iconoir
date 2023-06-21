@@ -2,6 +2,9 @@
 name = "embedded-iconoir"
 version = "0.2.0"
 edition = "2021"
+license = "MIT"
+authors = ["Yannik Bretschneider <me@yandrik.dev>"]
+description = "1300+ icons for embedded-graphics, ported from the Iconoir icon pack"
 
 [package.metadata.docs.rs]
 all-features = true
