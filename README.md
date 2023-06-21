@@ -105,11 +105,15 @@ to render the icons to `.bits` files, and generate the code.
 
 ## Changelog
 
+### 0.2.1: Marker Trait for Icons
+
+- `IconoirIcon` trait that doesn't rely on `embedded-graphics`' `PixelColor` is now available
+
 ### 0.2.0: Compatibility Patch for `embedded-graphics` 0.8
 
 - Updated `embedded-graphics` dependency to `0.8`
 - Fixed `embedded-graphics` compatibility issues
-- Rebuilt icons
+- Rebuilt icons (more icons from `Iconoir` are now available)
 
 ### 0.1.0: Initial Release
 

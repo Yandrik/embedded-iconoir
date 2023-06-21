@@ -110,6 +110,11 @@ impl<C: PixelColor, Ico: sealed::IconoirInternal> Icon<C, Ico> {
     }
 }
 
+/// Marker Trait for all Icons
+pub trait IconoirIcon: Sized + sealed::IconoirInternal {}
+
+impl<T> IconoirIcon for T where T: sealed::IconoirInternal {}
+
 pub trait IconoirNewIcon<C: embedded_graphics::prelude::PixelColor>: Sized
 where
     Self: sealed::IconoirInternal,
