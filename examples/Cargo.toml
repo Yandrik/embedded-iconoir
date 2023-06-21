@@ -15,7 +15,7 @@ name = "tester"
 [dependencies]
 anyhow = "1.0"
 colorous = "1.0.10"
-embedded-graphics-simulator = "0.4.1"
-embedded-graphics = "0.7.1"
+embedded-graphics-simulator = "0.5.0"
+embedded-graphics = "0.8.0"
 
 embedded-iconoir = { path = "../embedded-iconoir", features = ["all-resolutions"] }

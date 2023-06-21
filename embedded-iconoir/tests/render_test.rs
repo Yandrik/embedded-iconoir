@@ -1,7 +1,7 @@
+use embedded_graphics::geometry::OriginDimensions;
+use embedded_graphics::image::ImageDrawable;
 use embedded_graphics::mock_display::MockDisplay;
-use embedded_graphics_core::geometry::OriginDimensions;
-use embedded_graphics_core::image::ImageDrawable;
-use embedded_graphics_core::pixelcolor::BinaryColor;
+use embedded_graphics::pixelcolor::BinaryColor;
 
 use embedded_iconoir::{icons, Icon};
 

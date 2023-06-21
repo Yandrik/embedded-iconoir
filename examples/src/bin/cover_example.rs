@@ -1,15 +1,11 @@
 use colorous::Color;
-use embedded_graphics::image::Image;
-use embedded_graphics::pixelcolor::Rgb888;
-use embedded_graphics::prelude::*;
-use embedded_graphics_simulator::{
-    OutputSettingsBuilder, SimulatorDisplay, SimulatorEvent, Window,
-};
-use embedded_iconoir::prelude::IconoirNewIcon;
-
-use embedded_iconoir::icons;
 use std::thread;
 use std::time::Duration;
+use embedded_graphics::image::Image;
+use embedded_graphics::pixelcolor::Rgb888;
+use embedded_graphics_simulator::{OutputSettingsBuilder, SimulatorDisplay, SimulatorEvent, Window};
+use embedded_graphics::prelude::*;
+use embedded_iconoir::prelude::*;
 
 fn main() -> anyhow::Result<()> {
     let mut display = SimulatorDisplay::new(Size::new(250, 150));

@@ -1,9 +1,9 @@
 use criterion::{criterion_group, criterion_main, Criterion};
 use embedded_graphics::image::Image;
 use embedded_graphics::mock_display::MockDisplay;
-use embedded_graphics_core::pixelcolor::BinaryColor;
-use embedded_graphics_core::prelude::{ImageDrawable, Point};
-use embedded_graphics_core::Drawable;
+use embedded_graphics::pixelcolor::BinaryColor;
+use embedded_graphics::prelude::{ImageDrawable, Point};
+use embedded_graphics::Drawable;
 use embedded_iconoir::icons;
 use embedded_iconoir::prelude::IconoirNewIcon;
 

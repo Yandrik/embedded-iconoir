@@ -1,5 +1,5 @@
 use embedded_graphics::prelude::*;
-use embedded_graphics_core::primitives::Rectangle;
+use embedded_graphics::primitives::Rectangle;
 use static_assertions::const_assert;
 
 #[macro_export]
@@ -51,7 +51,7 @@ make_icon!(SomeIcon, 24, "Animals", "fish");
 ///
 /// There are two ways to instantiate an icon:
 /// ```rust
-/// # use embedded_graphics_core::pixelcolor::BinaryColor;
+/// # use embedded_graphics::pixelcolor::BinaryColor;
 /// # use embedded_iconoir::Icon;
 /// # use embedded_iconoir::prelude::*;
 /// // using constructors on icons (recommended)
@@ -67,8 +67,8 @@ make_icon!(SomeIcon, 24, "Animals", "fish");
 ///
 /// ```rust
 /// # use embedded_graphics::image::Image;
-/// # use embedded_graphics_core::pixelcolor::{BinaryColor};
-/// # use embedded_graphics_core::prelude::*;
+/// # use embedded_graphics::pixelcolor::{BinaryColor};
+/// # use embedded_graphics::prelude::*;
 /// # use embedded_graphics::mock_display::MockDisplay;
 /// # let mut  display = MockDisplay::new();
 /// // Import icons and traits
@@ -110,7 +110,7 @@ impl<C: PixelColor, Ico: sealed::IconoirInternal> Icon<C, Ico> {
     }
 }
 
-pub trait IconoirNewIcon<C: PixelColor>: Sized
+pub trait IconoirNewIcon<C: embedded_graphics::prelude::PixelColor>: Sized
 where
     Self: sealed::IconoirInternal,
 {

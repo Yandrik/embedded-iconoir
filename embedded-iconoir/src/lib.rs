@@ -8,8 +8,8 @@
 //!
 //! ```rust
 //! # use embedded_graphics::image::Image;
-//! # use embedded_graphics_core::pixelcolor::{BinaryColor};
-//! # use embedded_graphics_core::prelude::*;
+//! # use embedded_graphics::pixelcolor::{BinaryColor};
+//! # use embedded_graphics::prelude::*;
 //! # use embedded_graphics::mock_display::MockDisplay;
 //! # let mut  display = MockDisplay::new();
 //! // Import icons and traits
