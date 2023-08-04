@@ -55,6 +55,7 @@ macro_rules! test_render_icons_premade {
 }
 
 test_render_icons_premade!(test_12px, icons::size12px);
+test_render_icons_premade!(test_16px, icons::size16px);
 test_render_icons_premade!(test_18px, icons::size18px);
 test_render_icons_premade!(test_24px, icons::size24px);
 test_render_icons_premade!(test_32px, icons::size32px);
