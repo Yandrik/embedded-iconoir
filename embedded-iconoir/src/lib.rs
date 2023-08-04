@@ -74,8 +74,8 @@
 //!
 
 pub mod prelude {
-    pub use crate::icon::IconoirNewIcon;
     pub use crate::icon::IconoirIcon;
+    pub use crate::icon::IconoirNewIcon;
     pub use crate::icons;
 }
 
