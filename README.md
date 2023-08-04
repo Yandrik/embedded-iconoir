@@ -4,6 +4,8 @@
 `embedded-iconoir` is a library that allows you to use [Iconoir](https://github.com/iconoir-icons/iconoir)
 on embedded devices , using Rust and the [`embedded-graphics` library](https://github.com/embedded-graphics/embedded-graphics).
 
+It was initially written to be used in the [Kolibri embedded GUI framework](https://github.com/Yandrik/kolibri).
+
 ## How many Icons?
 All the over 1300 icons offered by [Iconoir](https://github.com/iconoir-icons/iconoir) are also supported in this library.
 They are ordered by categories, so if you need a preview look at [the Iconoir Website](https://iconoir.com)
@@ -104,6 +106,11 @@ and `git submodule update` to pull `Iconoir` into the repository. After that, ru
 to render the icons to `.bits` files, and generate the code.
 
 ## Changelog
+
+### 0.2.2: 16px icons
+
+- Icons are now available in `16px` too!
+- Rebuilt icons (more icons from `Iconoir` are now available)
 
 ### 0.2.1: Marker Trait for Icons
 
