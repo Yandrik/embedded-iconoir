@@ -23,7 +23,7 @@ image of a cat:
 ### Selecting a resolution
 
 `embedded-iconoir` gives you feature flags for the available rendering resolutions:
-`12px`, `18px`, `24px`, `32px`, `48px`, `96px` and `144px`.
+`12px`, 16px`, `18px`, `24px`, `32px`, `48px`, `96px` and `144px`.
 You can also enable the `all-resolutions` feature to just get all of them, but note
 that that will significantly increase your compile time.
 
