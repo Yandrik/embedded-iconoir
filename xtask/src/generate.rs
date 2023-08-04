@@ -243,7 +243,7 @@ fn gen_code(
 }
 
 pub fn main() {
-    let sizes = vec![12, 18, 24, 32, 48, 96, 144];
+    let sizes = vec![12, 16, 18, 24, 32, 48, 96, 144];
 
     // panic!("{:#?}", get_categories());
 

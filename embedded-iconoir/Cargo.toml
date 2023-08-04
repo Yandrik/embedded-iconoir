@@ -25,6 +25,7 @@ harness = false
 
 [features]
 12px = []
+16px = []
 18px = []
 24px = []
 32px = []
@@ -33,7 +34,7 @@ harness = false
 144px = []
 
 default = ["24px"]
-all-resolutions = ["12px", "18px", "24px", "32px", "48px", "96px", "144px"]
+all-resolutions = ["12px", "16px", "18px", "24px", "32px", "48px", "96px", "144px"]
 
 [dependencies]
 bit_field = "0.10"

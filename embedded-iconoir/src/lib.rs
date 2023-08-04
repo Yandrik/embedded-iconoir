@@ -36,6 +36,7 @@
 //! | Resolution |   Module    | Bytes per Icon |
 //! |------------|-------------|----------------|
 //! | 12px       | [size12px]  | 18             |
+//! | 16px       | [size16px]  | 32             |
 //! | 18px       | [size18px]  | 41             |
 //! | 24px       | [size24px]  | 72             |
 //! | 32px       | [size32px]  | 128            |
@@ -74,8 +75,8 @@
 //!
 
 pub mod prelude {
-    pub use crate::icon::IconoirNewIcon;
     pub use crate::icon::IconoirIcon;
+    pub use crate::icon::IconoirNewIcon;
     pub use crate::icons;
 }
 
