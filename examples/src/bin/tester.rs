@@ -3,7 +3,9 @@ use embedded_graphics::image::Image;
 use embedded_graphics::pixelcolor::Rgb888;
 use embedded_graphics::prelude::*;
 
-use embedded_graphics_simulator::{OutputSettingsBuilder, SimulatorDisplay, Window, SimulatorEvent};
+use embedded_graphics_simulator::{
+    OutputSettingsBuilder, SimulatorDisplay, SimulatorEvent, Window,
+};
 use embedded_iconoir::prelude::IconoirNewIcon;
 use embedded_iconoir::size18px::{actions, activities, buildings, cloud};
 use embedded_iconoir::size24px;
@@ -220,5 +222,4 @@ fn main() {
             }
         }
     }
-
 }
