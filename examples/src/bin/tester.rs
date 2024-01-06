@@ -217,7 +217,7 @@ fn main() {
         window.update(&display);
         for evt in window.events() {
             if let SimulatorEvent::Quit = evt {
-                break 'outer
+                break 'outer;
             }
         }
     }
