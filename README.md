@@ -107,6 +107,10 @@ to render the icons to `.bits` files, and generate the code.
 
 ## Changelog
 
+### 0.2.3: Low-Res Icon Fixes
+
+- Low Res Icons are now higher quality
+
 ### 0.2.2: 16px icons
 
 - Icons are now available in `16px` too!
