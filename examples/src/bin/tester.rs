@@ -216,9 +216,8 @@ fn main() {
     'outer: loop {
         window.update(&display);
         for evt in window.events() {
-            match evt {
-                SimulatorEvent::Quit => break 'outer,
-                _ => {}
+            if let SimulatorEvent::Quit = evt {
+                break 'outer;
             }
         }
     }

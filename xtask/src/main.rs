@@ -17,7 +17,7 @@ fn main() -> anyhow::Result<()> {
     // from rtic's xtask (https://github.com/rtic-rs/rtic/blob/master/xtask/src/main.rs)
     let probably_running_from_repo_root = Path::new("./xtask").exists();
     if !probably_running_from_repo_root {
-        bail!("xtasks can only be executed from the root of the `rtic` repository");
+        bail!("xtasks can only be executed from the root of the repository");
     }
     // end from
 

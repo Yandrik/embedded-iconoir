@@ -5,6 +5,8 @@ members = [
     "xtask",
 ]
 
+resolver = "2"
+
 # Set the settings for build scripts and proc-macros.
 
 [profile.dev.build-override]

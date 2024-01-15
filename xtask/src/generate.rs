@@ -11,13 +11,19 @@ use std::fmt::Write;
 use std::path::{Path, PathBuf};
 use walkdir::{DirEntry, WalkDir};
 
-const ALPHA_CUTOFF: u8 = 0x60;
 const TARGET_DIR: &str = "./embedded-iconoir/rendered";
 const ICONS_DIR: &str = "./iconoir/icons";
 const CATEGORIES_FILE_PATH: &str = "iconoir/iconoir.com/icons.csv";
 const EXTENSION: &str = "bits";
 
 const ICON_CODEGEN_TARGET_FILE: &str = "./embedded-iconoir/src/icons.gen.rs";
+
+const fn alpha_cutoff(size: u32) -> u8 {
+    match size {
+        0..=16 => 0x40,
+        _ => 0x60,
+    }
+}
 
 fn render_icon_to_bits(path: &Path, size: u32) -> anyhow::Result<BitVec<u8>> {
     assert!(size > 0, "BUG: Cannot render icon for size 0");
@@ -41,7 +47,7 @@ fn render_icon_to_bits(path: &Path, size: u32) -> anyhow::Result<BitVec<u8>> {
         .enumerate()
         .filter(|(a, _)| a % 4 == 3 /* select alpha channel */)
         .map(|(_, b)| *b) // discard index
-        .map(|alpha| alpha > ALPHA_CUTOFF)
+        .map(|alpha| alpha > alpha_cutoff(size))
         .collect();
 
     Ok(result)
