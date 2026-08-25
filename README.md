@@ -1,6 +1,8 @@
+
+
 # embedded-iconoir - Icons for every device, ever.
 
-## What is embedded-iconor?
+## What is embedded-iconoir?
 `embedded-iconoir` is a library that allows you to use [Iconoir](https://github.com/iconoir-icons/iconoir)
 on embedded devices , using Rust and the [`embedded-graphics` library](https://github.com/embedded-graphics/embedded-graphics).
 
