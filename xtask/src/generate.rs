@@ -331,13 +331,13 @@ pub fn main() {
                     .join(format!("{size}px-{icon_set}"))
                     .as_path(),
             )
-            .expect(&format!("Couldn't render {size}px-{icon_set} icons"));
+            .unwrap_or_else(|e| panic!("Couldn't render {size}px-{icon_set} icons:\n{e}"));
 
             *icons
                 .entry(*size)
-                .or_insert_with(|| MapType::new())
+                .or_default()
                 .entry(*icon_set)
-                .or_insert_with(MapType::new) = rendered_icons;
+                .or_default() = rendered_icons;
         }
     }
 
