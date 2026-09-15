@@ -16,7 +16,7 @@
 //! use embedded_iconoir::prelude::*;
 //!
 //! // Create an icon
-//! let icon = icons::size24px::actions::Download::new(BinaryColor::On);
+//! let icon = icons::size24px::regular::actions::Download::new(BinaryColor::On);
 //!
 //! // Wrap it in an embedded_graphics image
 //! let image = Image::new(&icon, Point::zero());
@@ -48,7 +48,7 @@
 //! To see a preview of the included icons, please check out the
 //! [Iconoir Website](https://iconoir.com). All categories on the website are available
 //! as sub-modules of the resolution modules (e.g. the `download` icon in the `Actions` category
-//! can be found at the path [`icons::size__px::actions::Download`](icons::size24px::actions::Download).
+//! can be found at the path [`icons::size__px::actions::Download`](icons::size24px::regular::actions::Download).
 //!
 //! ## "But I want a different resolution!"
 //! That is certainly doable. All resolutions are dynamically generated, and the ones that are

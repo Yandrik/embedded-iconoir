@@ -15,10 +15,10 @@ fn main() -> anyhow::Result<()> {
     let color = Rgb888::CSS_CYAN;
 
     // Color is specified during icon creation
-    let mut icon_tiny = icons::size12px::development::CodeBracketsSquare::new(color);
-    let mut icon_normal = icons::size24px::development::CodeBracketsSquare::new(color);
-    let mut icon_large = icons::size48px::development::CodeBracketsSquare::new(color);
-    let mut icon_huge = icons::size144px::development::CodeBracketsSquare::new(color);
+    let mut icon_tiny = icons::size12px::regular::development::CodeBracketsSquare::new(color);
+    let mut icon_normal = icons::size24px::regular::development::CodeBracketsSquare::new(color);
+    let mut icon_large = icons::size48px::regular::development::CodeBracketsSquare::new(color);
+    let mut icon_huge = icons::size144px::regular::development::CodeBracketsSquare::new(color);
 
     // Icons must be wrapped into images to draw them properly
     let image_tiny = Image::new(&icon_tiny, Point::new(10, 10));

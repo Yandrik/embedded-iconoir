@@ -4,7 +4,7 @@ use static_assertions::const_assert;
 
 #[macro_export]
 macro_rules! make_icon {
-    ($name:ident, $size:expr, $category:expr, $file:expr) => {
+    ($name:ident, $size:expr, $icon_set:literal, $category:expr, $file:expr) => {
         #[derive(Debug, Copy, Clone)]
         pub struct $name;
 
@@ -13,7 +13,9 @@ macro_rules! make_icon {
             const DATA: &'static [u8] = include_bytes!(concat!(
                 "../rendered/",
                 stringify!($size),
-                "px/",
+                "px-",
+                $icon_set,
+                "/",
                 $category,
                 "/",
                 $file,
@@ -32,12 +34,12 @@ macro_rules! make_icon {
 
 #[macro_export]
 macro_rules! make_icon_category {
-    ($name:ident, $size:expr, $category:expr, [ $(($icon_name:ident, $file:expr)),* $(,)? ] ) => {
+    ($name:ident, $size:expr, $icon_set:literal, $category:expr, [ $(($icon_name:ident, $file:expr)),* $(,)? ] ) => {
     paste::paste ! {
         pub mod [<$name:snake>] {
             use super::*;
             $(
-            make_icon!( $icon_name, $size, $category, $file);
+            make_icon!( $icon_name, $size, $icon_set, $category, $file);
 
             )*
         }
@@ -45,7 +47,7 @@ macro_rules! make_icon_category {
     }
 }
 
-make_icon!(SomeIcon, 24, "Animals", "fish");
+make_icon!(SomeIcon, 24, "regular", "Animals", "fish");
 
 /// Struct to store icon color and properties.
 ///
@@ -55,9 +57,9 @@ make_icon!(SomeIcon, 24, "Animals", "fish");
 /// # use embedded_iconoir::Icon;
 /// # use embedded_iconoir::prelude::*;
 /// // using constructors on icons (recommended)
-/// let icon = icons::size24px::actions::Download::new(BinaryColor::On);
+/// let icon = icons::size24px::regular::actions::Download::new(BinaryColor::On);
 /// // using types
-/// let icon: Icon<_, icons::size24px::actions::Download> = Icon::new(BinaryColor::On);
+/// let icon: Icon<_, icons::size24px::regular::actions::Download> = Icon::new(BinaryColor::On);
 /// ```
 /// Both result in the same icon (`Icon<COLOR, ICON>`). Use whichever you prefer.
 ///
@@ -75,7 +77,7 @@ make_icon!(SomeIcon, 24, "Animals", "fish");
 /// use embedded_iconoir::prelude::*;
 ///
 /// // Create an icon
-/// let icon = icons::size24px::actions::Download::new(BinaryColor::On);
+/// let icon = icons::size24px::regular::actions::Download::new(BinaryColor::On);
 ///
 /// // Wrap it in an embedded_graphics image
 /// let image = Image::new(&icon, Point::zero());

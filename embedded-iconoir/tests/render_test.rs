@@ -17,6 +17,19 @@ macro_rules! test_render_icon {
 }
 
 macro_rules! test_render_icons {
+    ( $name:ident, $res:ident::$module:ident::$icon_set:ident, $($cat:ident::$icon:ident),*$(,)? ) => {
+        #[test]
+        fn $name() -> anyhow::Result<()> {
+            $(
+                println!("testing icon {}...", stringify!($res::$module::$icon_set::$cat::$icon));
+                test_render_icon!($res::$module::$icon_set::$cat::$icon)?;
+            )*
+            Ok(())
+        }
+    }
+}
+
+macro_rules! test_render_icons_legacy {
     ( $name:ident, $res:ident::$module:ident, $($cat:ident::$icon:ident),*$(,)? ) => {
         #[test]
         fn $name() -> anyhow::Result<()> {
@@ -36,31 +49,46 @@ fn temp() {
 }
 
 macro_rules! test_render_icons_premade {
-    ($name:ident, $res:ident::$module:ident) => {
+    ($name:ident, $res:ident::$module:ident::$icon_set:ident) => {
         test_render_icons!(
             $name,
-            $res::$module,
+            $res::$module::$icon_set,
             activities::Archery,
             emojis::EmojiBlinkRight,
             cloud::CloudDesync,
-            three_d_editor::ThreedEllipse,
+            three_d_editor::EllipseThreed,
             actions::Restart,
             animals::Fish,
             animations::Keyframes,
             database::DatabaseSettings,
             design_tools::BorderTr,
-            devices::SaveFloppyDisk,
+            devices::FloppyDisk,
         );
     };
 }
 
-test_render_icons_premade!(test_12px, icons::size12px);
-test_render_icons_premade!(test_16px, icons::size16px);
-test_render_icons_premade!(test_18px, icons::size18px);
-test_render_icons_premade!(test_24px, icons::size24px);
-test_render_icons_premade!(test_32px, icons::size32px);
-test_render_icons_premade!(test_48px, icons::size48px);
+test_render_icons_premade!(test_12px, icons::size12px::regular);
+test_render_icons_premade!(test_16px, icons::size16px::regular);
+test_render_icons_premade!(test_18px, icons::size18px::regular);
+test_render_icons_premade!(test_24px, icons::size24px::regular);
+test_render_icons_premade!(test_32px, icons::size32px::regular);
+test_render_icons_premade!(test_48px, icons::size48px::regular);
+
+test_render_icons!(
+    test_solid_icons,
+    icons::size24px::solid,
+    actions::PlusCircle,
+    actions::XmarkCircle,
+    organization::Star,
+);
+
+test_render_icons_legacy!(
+    test_legacy_category_path,
+    icons::size24px,
+    actions::Download,
+    organization::Star,
+);
 
 // doesn't work as MockDisplay as a hard-coded size of 64px for now
-// test_render_icons_premade!(test_96px, icons::size96px);
-// test_render_icons_premade!(test_144px, icons::size144px);
+// test_render_icons_premade!(test_96px, icons::size96px::regular);
+// test_render_icons_premade!(test_144px, icons::size144px::regular);
