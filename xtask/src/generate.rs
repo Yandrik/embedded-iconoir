@@ -27,8 +27,13 @@ enum IconSet {
 }
 
 impl IconSet {
-    fn feature_name(&self, size: u32) -> String {
-        format!("{size}px-{self}")
+    const ALL: &[Self] = &[Self::Regular, Self::Solid];
+
+    fn feature_name(&self) -> Option<&'static str> {
+        match self {
+            IconSet::Regular => None,
+            IconSet::Solid => Some("icon-set-solid"),
+        }
     }
 }
 
@@ -210,24 +215,14 @@ fn gen_module(
         "BUG: Cannot generate module for empty icon set"
     );
 
-    writeln!(
-        code,
-        "#[cfg(any({}))]",
-        icons
-            .keys()
-            .map(|icon_set| format!("feature = \"{}\"", icon_set.feature_name(size)))
-            .collect::<Vec<_>>()
-            .join(", ")
-    )?;
+    writeln!(code, "#[cfg(feature = \"{size}px\")]")?;
 
     writeln!(code, "pub mod size{size}px {{\n")?;
 
     for (icon_set, icons) in icons {
-        writeln!(
-            code,
-            "#[cfg(feature = \"{}\")]",
-            icon_set.feature_name(size)
-        )?;
+        if let Some(feature_name) = icon_set.feature_name() {
+            writeln!(code, "#[cfg(feature = \"{feature_name}\")]")?;
+        }
         writeln!(code, "pub mod {icon_set} {{\n\nuse super::super::*;\n")?;
         for (cat, icon_list) in icons {
             println!(
@@ -250,6 +245,22 @@ fn gen_module(
             writeln!(code, "]);")?;
         }
         writeln!(code, "}} // end of {icon_set} module")?;
+    }
+
+    // Keep the original `sizeXXpx::category` API as shorthand for the regular
+    // icon set. Icon-set module names take precedence over flattened category
+    // names, so colliding categories remain available through `regular::...`.
+    let regular_icons = icons
+        .get(&IconSet::Regular)
+        .expect("BUG: regular icon set is missing");
+    for category in regular_icons.keys() {
+        let module_name = denumber(category).to_snake_case();
+        if !IconSet::ALL
+            .iter()
+            .any(|icon_set| icon_set.to_string() == module_name)
+        {
+            writeln!(code, "pub use regular::{module_name};")?;
+        }
     }
 
     writeln!(code, "}} // end of size{size}px module\n\n")?;
@@ -292,14 +303,13 @@ fn gen_code(target_file: &Path, icons: Icons) -> anyhow::Result<()> {
 
 pub fn main() {
     const SIZES: &[u32] = &[12, 16, 18, 24, 32, 48, 96, 144];
-    const SETS: &[IconSet] = &[IconSet::Regular, IconSet::Solid];
     let categories = get_categories().unwrap();
 
     // MapType::<size, MapType<icon set, MapType<category, Vec<icon_name>>>>
     let mut icons = Icons::new();
 
-    for icon_set in SETS {
-        let svgs: Vec<_> = WalkDir::new(PathBuf::from(ICONS_DIR).join(icon_set.to_string())) // WalkDir for potential future folders
+    for icon_set in IconSet::ALL {
+        let mut svgs: Vec<_> = WalkDir::new(PathBuf::from(ICONS_DIR).join(icon_set.to_string())) // WalkDir for potential future folders
             .max_depth(1)
             .into_iter()
             .filter_map(|f| f.ok())
@@ -310,6 +320,7 @@ pub fn main() {
                     .unwrap_or(false)
             })
             .collect();
+        svgs.sort_by_key(|entry| entry.file_name().to_owned());
 
         for size in SIZES {
             let rendered_icons = render_icons(

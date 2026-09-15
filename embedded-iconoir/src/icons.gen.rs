@@ -3,10 +3,9 @@
 // Any changes you make will disappear when the file is overwritten the next build.
 
 
-#[cfg(any(feature = "12px-regular", feature = "12px-solid"))]
+#[cfg(feature = "12px")]
 pub mod size12px {
 
-#[cfg(feature = "12px-regular")]
 pub mod regular {
 
 use super::super::*;
@@ -1060,7 +1059,6 @@ make_icon_category!(other, 12, "regular", "Other", [
       (DeCompress, "de-compress"),
       (Dialpad, "dialpad"),
       (FileNotFound, "file-not-found"),
-      (Maximize, "maximize"),
       (Gas, "gas"),
       (Gift, "gift"),
       (HalfMoon, "half-moon"),
@@ -1070,6 +1068,7 @@ make_icon_category!(other, 12, "regular", "Other", [
       (LinkSlash, "link-slash"),
       (LinkXmark, "link-xmark"),
       (Link, "link"),
+      (Maximize, "maximize"),
       (MinusSquareDashed, "minus-square-dashed"),
       (Notes, "notes"),
       (NumberZeroSquare, "number-0-square"),
@@ -1487,7 +1486,7 @@ make_icon_category!(weather, 12, "regular", "Weather", [
       (Wind, "wind"),
 ]);
 } // end of regular module
-#[cfg(feature = "12px-solid")]
+#[cfg(feature = "icon-set-solid")]
 pub mod solid {
 
 use super::super::*;
@@ -1837,13 +1836,58 @@ make_icon_category!(system, 12, "solid", "System", [
       (WindowTabs, "window-tabs"),
 ]);
 } // end of solid module
+pub use regular::three_d_editor;
+pub use regular::actions;
+pub use regular::activities;
+pub use regular::animals;
+pub use regular::animations;
+pub use regular::audio;
+pub use regular::buildings;
+pub use regular::business;
+pub use regular::clothing;
+pub use regular::cloud;
+pub use regular::communication;
+pub use regular::connectivity;
+pub use regular::database;
+pub use regular::design_tools;
+pub use regular::development;
+pub use regular::devices;
+pub use regular::docs;
+pub use regular::editor;
+pub use regular::emojis;
+pub use regular::finance;
+pub use regular::food;
+pub use regular::gaming;
+pub use regular::gestures;
+pub use regular::git;
+pub use regular::health;
+pub use regular::home;
+pub use regular::identity;
+pub use regular::layout;
+pub use regular::maps;
+pub use regular::music;
+pub use regular::nature;
+pub use regular::navigation;
+pub use regular::organization;
+pub use regular::other;
+pub use regular::photos_and_videos;
+pub use regular::science;
+pub use regular::security;
+pub use regular::shapes;
+pub use regular::shopping;
+pub use regular::social;
+pub use regular::system;
+pub use regular::tools;
+pub use regular::transport;
+pub use regular::typography;
+pub use regular::users;
+pub use regular::weather;
 } // end of size12px module
 
 
-#[cfg(any(feature = "16px-regular", feature = "16px-solid"))]
+#[cfg(feature = "16px")]
 pub mod size16px {
 
-#[cfg(feature = "16px-regular")]
 pub mod regular {
 
 use super::super::*;
@@ -2897,7 +2941,6 @@ make_icon_category!(other, 16, "regular", "Other", [
       (DeCompress, "de-compress"),
       (Dialpad, "dialpad"),
       (FileNotFound, "file-not-found"),
-      (Maximize, "maximize"),
       (Gas, "gas"),
       (Gift, "gift"),
       (HalfMoon, "half-moon"),
@@ -2907,6 +2950,7 @@ make_icon_category!(other, 16, "regular", "Other", [
       (LinkSlash, "link-slash"),
       (LinkXmark, "link-xmark"),
       (Link, "link"),
+      (Maximize, "maximize"),
       (MinusSquareDashed, "minus-square-dashed"),
       (Notes, "notes"),
       (NumberZeroSquare, "number-0-square"),
@@ -3324,7 +3368,7 @@ make_icon_category!(weather, 16, "regular", "Weather", [
       (Wind, "wind"),
 ]);
 } // end of regular module
-#[cfg(feature = "16px-solid")]
+#[cfg(feature = "icon-set-solid")]
 pub mod solid {
 
 use super::super::*;
@@ -3674,13 +3718,58 @@ make_icon_category!(system, 16, "solid", "System", [
       (WindowTabs, "window-tabs"),
 ]);
 } // end of solid module
+pub use regular::three_d_editor;
+pub use regular::actions;
+pub use regular::activities;
+pub use regular::animals;
+pub use regular::animations;
+pub use regular::audio;
+pub use regular::buildings;
+pub use regular::business;
+pub use regular::clothing;
+pub use regular::cloud;
+pub use regular::communication;
+pub use regular::connectivity;
+pub use regular::database;
+pub use regular::design_tools;
+pub use regular::development;
+pub use regular::devices;
+pub use regular::docs;
+pub use regular::editor;
+pub use regular::emojis;
+pub use regular::finance;
+pub use regular::food;
+pub use regular::gaming;
+pub use regular::gestures;
+pub use regular::git;
+pub use regular::health;
+pub use regular::home;
+pub use regular::identity;
+pub use regular::layout;
+pub use regular::maps;
+pub use regular::music;
+pub use regular::nature;
+pub use regular::navigation;
+pub use regular::organization;
+pub use regular::other;
+pub use regular::photos_and_videos;
+pub use regular::science;
+pub use regular::security;
+pub use regular::shapes;
+pub use regular::shopping;
+pub use regular::social;
+pub use regular::system;
+pub use regular::tools;
+pub use regular::transport;
+pub use regular::typography;
+pub use regular::users;
+pub use regular::weather;
 } // end of size16px module
 
 
-#[cfg(any(feature = "18px-regular", feature = "18px-solid"))]
+#[cfg(feature = "18px")]
 pub mod size18px {
 
-#[cfg(feature = "18px-regular")]
 pub mod regular {
 
 use super::super::*;
@@ -4734,7 +4823,6 @@ make_icon_category!(other, 18, "regular", "Other", [
       (DeCompress, "de-compress"),
       (Dialpad, "dialpad"),
       (FileNotFound, "file-not-found"),
-      (Maximize, "maximize"),
       (Gas, "gas"),
       (Gift, "gift"),
       (HalfMoon, "half-moon"),
@@ -4744,6 +4832,7 @@ make_icon_category!(other, 18, "regular", "Other", [
       (LinkSlash, "link-slash"),
       (LinkXmark, "link-xmark"),
       (Link, "link"),
+      (Maximize, "maximize"),
       (MinusSquareDashed, "minus-square-dashed"),
       (Notes, "notes"),
       (NumberZeroSquare, "number-0-square"),
@@ -5161,7 +5250,7 @@ make_icon_category!(weather, 18, "regular", "Weather", [
       (Wind, "wind"),
 ]);
 } // end of regular module
-#[cfg(feature = "18px-solid")]
+#[cfg(feature = "icon-set-solid")]
 pub mod solid {
 
 use super::super::*;
@@ -5511,13 +5600,58 @@ make_icon_category!(system, 18, "solid", "System", [
       (WindowTabs, "window-tabs"),
 ]);
 } // end of solid module
+pub use regular::three_d_editor;
+pub use regular::actions;
+pub use regular::activities;
+pub use regular::animals;
+pub use regular::animations;
+pub use regular::audio;
+pub use regular::buildings;
+pub use regular::business;
+pub use regular::clothing;
+pub use regular::cloud;
+pub use regular::communication;
+pub use regular::connectivity;
+pub use regular::database;
+pub use regular::design_tools;
+pub use regular::development;
+pub use regular::devices;
+pub use regular::docs;
+pub use regular::editor;
+pub use regular::emojis;
+pub use regular::finance;
+pub use regular::food;
+pub use regular::gaming;
+pub use regular::gestures;
+pub use regular::git;
+pub use regular::health;
+pub use regular::home;
+pub use regular::identity;
+pub use regular::layout;
+pub use regular::maps;
+pub use regular::music;
+pub use regular::nature;
+pub use regular::navigation;
+pub use regular::organization;
+pub use regular::other;
+pub use regular::photos_and_videos;
+pub use regular::science;
+pub use regular::security;
+pub use regular::shapes;
+pub use regular::shopping;
+pub use regular::social;
+pub use regular::system;
+pub use regular::tools;
+pub use regular::transport;
+pub use regular::typography;
+pub use regular::users;
+pub use regular::weather;
 } // end of size18px module
 
 
-#[cfg(any(feature = "24px-regular", feature = "24px-solid"))]
+#[cfg(feature = "24px")]
 pub mod size24px {
 
-#[cfg(feature = "24px-regular")]
 pub mod regular {
 
 use super::super::*;
@@ -6571,7 +6705,6 @@ make_icon_category!(other, 24, "regular", "Other", [
       (DeCompress, "de-compress"),
       (Dialpad, "dialpad"),
       (FileNotFound, "file-not-found"),
-      (Maximize, "maximize"),
       (Gas, "gas"),
       (Gift, "gift"),
       (HalfMoon, "half-moon"),
@@ -6581,6 +6714,7 @@ make_icon_category!(other, 24, "regular", "Other", [
       (LinkSlash, "link-slash"),
       (LinkXmark, "link-xmark"),
       (Link, "link"),
+      (Maximize, "maximize"),
       (MinusSquareDashed, "minus-square-dashed"),
       (Notes, "notes"),
       (NumberZeroSquare, "number-0-square"),
@@ -6998,7 +7132,7 @@ make_icon_category!(weather, 24, "regular", "Weather", [
       (Wind, "wind"),
 ]);
 } // end of regular module
-#[cfg(feature = "24px-solid")]
+#[cfg(feature = "icon-set-solid")]
 pub mod solid {
 
 use super::super::*;
@@ -7348,13 +7482,58 @@ make_icon_category!(system, 24, "solid", "System", [
       (WindowTabs, "window-tabs"),
 ]);
 } // end of solid module
+pub use regular::three_d_editor;
+pub use regular::actions;
+pub use regular::activities;
+pub use regular::animals;
+pub use regular::animations;
+pub use regular::audio;
+pub use regular::buildings;
+pub use regular::business;
+pub use regular::clothing;
+pub use regular::cloud;
+pub use regular::communication;
+pub use regular::connectivity;
+pub use regular::database;
+pub use regular::design_tools;
+pub use regular::development;
+pub use regular::devices;
+pub use regular::docs;
+pub use regular::editor;
+pub use regular::emojis;
+pub use regular::finance;
+pub use regular::food;
+pub use regular::gaming;
+pub use regular::gestures;
+pub use regular::git;
+pub use regular::health;
+pub use regular::home;
+pub use regular::identity;
+pub use regular::layout;
+pub use regular::maps;
+pub use regular::music;
+pub use regular::nature;
+pub use regular::navigation;
+pub use regular::organization;
+pub use regular::other;
+pub use regular::photos_and_videos;
+pub use regular::science;
+pub use regular::security;
+pub use regular::shapes;
+pub use regular::shopping;
+pub use regular::social;
+pub use regular::system;
+pub use regular::tools;
+pub use regular::transport;
+pub use regular::typography;
+pub use regular::users;
+pub use regular::weather;
 } // end of size24px module
 
 
-#[cfg(any(feature = "32px-regular", feature = "32px-solid"))]
+#[cfg(feature = "32px")]
 pub mod size32px {
 
-#[cfg(feature = "32px-regular")]
 pub mod regular {
 
 use super::super::*;
@@ -8408,7 +8587,6 @@ make_icon_category!(other, 32, "regular", "Other", [
       (DeCompress, "de-compress"),
       (Dialpad, "dialpad"),
       (FileNotFound, "file-not-found"),
-      (Maximize, "maximize"),
       (Gas, "gas"),
       (Gift, "gift"),
       (HalfMoon, "half-moon"),
@@ -8418,6 +8596,7 @@ make_icon_category!(other, 32, "regular", "Other", [
       (LinkSlash, "link-slash"),
       (LinkXmark, "link-xmark"),
       (Link, "link"),
+      (Maximize, "maximize"),
       (MinusSquareDashed, "minus-square-dashed"),
       (Notes, "notes"),
       (NumberZeroSquare, "number-0-square"),
@@ -8835,7 +9014,7 @@ make_icon_category!(weather, 32, "regular", "Weather", [
       (Wind, "wind"),
 ]);
 } // end of regular module
-#[cfg(feature = "32px-solid")]
+#[cfg(feature = "icon-set-solid")]
 pub mod solid {
 
 use super::super::*;
@@ -9185,13 +9364,58 @@ make_icon_category!(system, 32, "solid", "System", [
       (WindowTabs, "window-tabs"),
 ]);
 } // end of solid module
+pub use regular::three_d_editor;
+pub use regular::actions;
+pub use regular::activities;
+pub use regular::animals;
+pub use regular::animations;
+pub use regular::audio;
+pub use regular::buildings;
+pub use regular::business;
+pub use regular::clothing;
+pub use regular::cloud;
+pub use regular::communication;
+pub use regular::connectivity;
+pub use regular::database;
+pub use regular::design_tools;
+pub use regular::development;
+pub use regular::devices;
+pub use regular::docs;
+pub use regular::editor;
+pub use regular::emojis;
+pub use regular::finance;
+pub use regular::food;
+pub use regular::gaming;
+pub use regular::gestures;
+pub use regular::git;
+pub use regular::health;
+pub use regular::home;
+pub use regular::identity;
+pub use regular::layout;
+pub use regular::maps;
+pub use regular::music;
+pub use regular::nature;
+pub use regular::navigation;
+pub use regular::organization;
+pub use regular::other;
+pub use regular::photos_and_videos;
+pub use regular::science;
+pub use regular::security;
+pub use regular::shapes;
+pub use regular::shopping;
+pub use regular::social;
+pub use regular::system;
+pub use regular::tools;
+pub use regular::transport;
+pub use regular::typography;
+pub use regular::users;
+pub use regular::weather;
 } // end of size32px module
 
 
-#[cfg(any(feature = "48px-regular", feature = "48px-solid"))]
+#[cfg(feature = "48px")]
 pub mod size48px {
 
-#[cfg(feature = "48px-regular")]
 pub mod regular {
 
 use super::super::*;
@@ -10245,7 +10469,6 @@ make_icon_category!(other, 48, "regular", "Other", [
       (DeCompress, "de-compress"),
       (Dialpad, "dialpad"),
       (FileNotFound, "file-not-found"),
-      (Maximize, "maximize"),
       (Gas, "gas"),
       (Gift, "gift"),
       (HalfMoon, "half-moon"),
@@ -10255,6 +10478,7 @@ make_icon_category!(other, 48, "regular", "Other", [
       (LinkSlash, "link-slash"),
       (LinkXmark, "link-xmark"),
       (Link, "link"),
+      (Maximize, "maximize"),
       (MinusSquareDashed, "minus-square-dashed"),
       (Notes, "notes"),
       (NumberZeroSquare, "number-0-square"),
@@ -10672,7 +10896,7 @@ make_icon_category!(weather, 48, "regular", "Weather", [
       (Wind, "wind"),
 ]);
 } // end of regular module
-#[cfg(feature = "48px-solid")]
+#[cfg(feature = "icon-set-solid")]
 pub mod solid {
 
 use super::super::*;
@@ -11022,13 +11246,58 @@ make_icon_category!(system, 48, "solid", "System", [
       (WindowTabs, "window-tabs"),
 ]);
 } // end of solid module
+pub use regular::three_d_editor;
+pub use regular::actions;
+pub use regular::activities;
+pub use regular::animals;
+pub use regular::animations;
+pub use regular::audio;
+pub use regular::buildings;
+pub use regular::business;
+pub use regular::clothing;
+pub use regular::cloud;
+pub use regular::communication;
+pub use regular::connectivity;
+pub use regular::database;
+pub use regular::design_tools;
+pub use regular::development;
+pub use regular::devices;
+pub use regular::docs;
+pub use regular::editor;
+pub use regular::emojis;
+pub use regular::finance;
+pub use regular::food;
+pub use regular::gaming;
+pub use regular::gestures;
+pub use regular::git;
+pub use regular::health;
+pub use regular::home;
+pub use regular::identity;
+pub use regular::layout;
+pub use regular::maps;
+pub use regular::music;
+pub use regular::nature;
+pub use regular::navigation;
+pub use regular::organization;
+pub use regular::other;
+pub use regular::photos_and_videos;
+pub use regular::science;
+pub use regular::security;
+pub use regular::shapes;
+pub use regular::shopping;
+pub use regular::social;
+pub use regular::system;
+pub use regular::tools;
+pub use regular::transport;
+pub use regular::typography;
+pub use regular::users;
+pub use regular::weather;
 } // end of size48px module
 
 
-#[cfg(any(feature = "96px-regular", feature = "96px-solid"))]
+#[cfg(feature = "96px")]
 pub mod size96px {
 
-#[cfg(feature = "96px-regular")]
 pub mod regular {
 
 use super::super::*;
@@ -12082,7 +12351,6 @@ make_icon_category!(other, 96, "regular", "Other", [
       (DeCompress, "de-compress"),
       (Dialpad, "dialpad"),
       (FileNotFound, "file-not-found"),
-      (Maximize, "maximize"),
       (Gas, "gas"),
       (Gift, "gift"),
       (HalfMoon, "half-moon"),
@@ -12092,6 +12360,7 @@ make_icon_category!(other, 96, "regular", "Other", [
       (LinkSlash, "link-slash"),
       (LinkXmark, "link-xmark"),
       (Link, "link"),
+      (Maximize, "maximize"),
       (MinusSquareDashed, "minus-square-dashed"),
       (Notes, "notes"),
       (NumberZeroSquare, "number-0-square"),
@@ -12509,7 +12778,7 @@ make_icon_category!(weather, 96, "regular", "Weather", [
       (Wind, "wind"),
 ]);
 } // end of regular module
-#[cfg(feature = "96px-solid")]
+#[cfg(feature = "icon-set-solid")]
 pub mod solid {
 
 use super::super::*;
@@ -12859,13 +13128,58 @@ make_icon_category!(system, 96, "solid", "System", [
       (WindowTabs, "window-tabs"),
 ]);
 } // end of solid module
+pub use regular::three_d_editor;
+pub use regular::actions;
+pub use regular::activities;
+pub use regular::animals;
+pub use regular::animations;
+pub use regular::audio;
+pub use regular::buildings;
+pub use regular::business;
+pub use regular::clothing;
+pub use regular::cloud;
+pub use regular::communication;
+pub use regular::connectivity;
+pub use regular::database;
+pub use regular::design_tools;
+pub use regular::development;
+pub use regular::devices;
+pub use regular::docs;
+pub use regular::editor;
+pub use regular::emojis;
+pub use regular::finance;
+pub use regular::food;
+pub use regular::gaming;
+pub use regular::gestures;
+pub use regular::git;
+pub use regular::health;
+pub use regular::home;
+pub use regular::identity;
+pub use regular::layout;
+pub use regular::maps;
+pub use regular::music;
+pub use regular::nature;
+pub use regular::navigation;
+pub use regular::organization;
+pub use regular::other;
+pub use regular::photos_and_videos;
+pub use regular::science;
+pub use regular::security;
+pub use regular::shapes;
+pub use regular::shopping;
+pub use regular::social;
+pub use regular::system;
+pub use regular::tools;
+pub use regular::transport;
+pub use regular::typography;
+pub use regular::users;
+pub use regular::weather;
 } // end of size96px module
 
 
-#[cfg(any(feature = "144px-regular", feature = "144px-solid"))]
+#[cfg(feature = "144px")]
 pub mod size144px {
 
-#[cfg(feature = "144px-regular")]
 pub mod regular {
 
 use super::super::*;
@@ -13919,7 +14233,6 @@ make_icon_category!(other, 144, "regular", "Other", [
       (DeCompress, "de-compress"),
       (Dialpad, "dialpad"),
       (FileNotFound, "file-not-found"),
-      (Maximize, "maximize"),
       (Gas, "gas"),
       (Gift, "gift"),
       (HalfMoon, "half-moon"),
@@ -13929,6 +14242,7 @@ make_icon_category!(other, 144, "regular", "Other", [
       (LinkSlash, "link-slash"),
       (LinkXmark, "link-xmark"),
       (Link, "link"),
+      (Maximize, "maximize"),
       (MinusSquareDashed, "minus-square-dashed"),
       (Notes, "notes"),
       (NumberZeroSquare, "number-0-square"),
@@ -14346,7 +14660,7 @@ make_icon_category!(weather, 144, "regular", "Weather", [
       (Wind, "wind"),
 ]);
 } // end of regular module
-#[cfg(feature = "144px-solid")]
+#[cfg(feature = "icon-set-solid")]
 pub mod solid {
 
 use super::super::*;
@@ -14696,6 +15010,52 @@ make_icon_category!(system, 144, "solid", "System", [
       (WindowTabs, "window-tabs"),
 ]);
 } // end of solid module
+pub use regular::three_d_editor;
+pub use regular::actions;
+pub use regular::activities;
+pub use regular::animals;
+pub use regular::animations;
+pub use regular::audio;
+pub use regular::buildings;
+pub use regular::business;
+pub use regular::clothing;
+pub use regular::cloud;
+pub use regular::communication;
+pub use regular::connectivity;
+pub use regular::database;
+pub use regular::design_tools;
+pub use regular::development;
+pub use regular::devices;
+pub use regular::docs;
+pub use regular::editor;
+pub use regular::emojis;
+pub use regular::finance;
+pub use regular::food;
+pub use regular::gaming;
+pub use regular::gestures;
+pub use regular::git;
+pub use regular::health;
+pub use regular::home;
+pub use regular::identity;
+pub use regular::layout;
+pub use regular::maps;
+pub use regular::music;
+pub use regular::nature;
+pub use regular::navigation;
+pub use regular::organization;
+pub use regular::other;
+pub use regular::photos_and_videos;
+pub use regular::science;
+pub use regular::security;
+pub use regular::shapes;
+pub use regular::shopping;
+pub use regular::social;
+pub use regular::system;
+pub use regular::tools;
+pub use regular::transport;
+pub use regular::typography;
+pub use regular::users;
+pub use regular::weather;
 } // end of size144px module
 
 

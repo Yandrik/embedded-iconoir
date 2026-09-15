@@ -29,6 +29,19 @@ macro_rules! test_render_icons {
     }
 }
 
+macro_rules! test_render_icons_legacy {
+    ( $name:ident, $res:ident::$module:ident, $($cat:ident::$icon:ident),*$(,)? ) => {
+        #[test]
+        fn $name() -> anyhow::Result<()> {
+            $(
+                println!("testing icon {}...", stringify!($res::$module::$cat::$icon));
+                test_render_icon!($res::$module::$cat::$icon)?;
+            )*
+            Ok(())
+        }
+    }
+}
+
 #[test]
 fn temp() {
     let disp: MockDisplay<BinaryColor> = MockDisplay::new();
@@ -60,6 +73,21 @@ test_render_icons_premade!(test_18px, icons::size18px::regular);
 test_render_icons_premade!(test_24px, icons::size24px::regular);
 test_render_icons_premade!(test_32px, icons::size32px::regular);
 test_render_icons_premade!(test_48px, icons::size48px::regular);
+
+test_render_icons!(
+    test_solid_icons,
+    icons::size24px::solid,
+    actions::PlusCircle,
+    actions::XmarkCircle,
+    organization::Star,
+);
+
+test_render_icons_legacy!(
+    test_legacy_category_path,
+    icons::size24px,
+    actions::Download,
+    organization::Star,
+);
 
 // doesn't work as MockDisplay as a hard-coded size of 64px for now
 // test_render_icons_premade!(test_96px, icons::size96px::regular);
